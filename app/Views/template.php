@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?? 'MyCIApp' ?></title>
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
     <style>
         .navbar-custom { background-color: #001f4d; }
         
@@ -14,7 +19,7 @@
                 top: 100%;
                 right: 0;
                 background-color: #001f4d; /* Match navbar background */
-                width: auto; /* Only as wide as the content */
+                width: auto;
                 text-align: right;
                 padding: 10px;
             }
@@ -40,7 +45,7 @@
 
         <!-- Collapsible Links -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-lg-auto"> <!-- right aligned on large screens -->
+            <ul class="navbar-nav ms-lg-auto">
                 <li class="nav-item">
                     <a class="nav-link <?= ($page ?? '') === 'home' ? 'active' : '' ?>" href="<?= base_url('/') ?>">Home</a>
                 </li>
@@ -59,6 +64,7 @@
     <?= $this->renderSection('content') ?>
 </div>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     const navToggleBtn = document.getElementById('navToggleBtn');
@@ -74,6 +80,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 
