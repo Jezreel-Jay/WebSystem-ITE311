@@ -1,6 +1,13 @@
-<IfModule authz_core_module>
-    Require all denied
-</IfModule>
-<IfModule !authz_core_module>
-    Deny from all
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /ITE311-RIVERA2/
+
+    # Redirect all requests to index.php if the file/folder doesn't exist
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+
+    # Optional: force www (remove if not needed)
+    # RewriteCond %{HTTP_HOST} !^www\. [NC]
+    # RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 </IfModule>
