@@ -9,7 +9,7 @@ class Userseeder extends CI_Controller {
         $this->load->database();
 
         // Restrict to CLI (so no one hits it from browser)
-        if (!$this->input->is_cli_request()) {
+        if (php_sapi_name() !== 'cli') {
             show_error('This script can only be accessed via the command line');
         }
     }

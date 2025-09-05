@@ -20,4 +20,9 @@ $route['contact'] = 'home/contact';
 // Route for about page
 $route['about'] = 'home/about';
 
-// Remove any $routes->get() lines, as they are for CodeIgniter
+//Auth routes for registration and login (CodeIgniter 3 syntax)
+$route['register'] = 'auth/register';
+$route['login'] = 'auth/login';
+$route['logout'] = 'auth/logout';
+$route['dashboard'] = 'auth/dashboard';
+
