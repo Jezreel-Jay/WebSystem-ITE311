@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model {
 
-    private $table = 'new_user'; // make sure this table exists in lms_rivera DB
+    private $table = 'new_user'; 
 
     public function insert_user($data) {
         return $this->db->insert($this->table, $data);
