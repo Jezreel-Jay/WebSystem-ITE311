@@ -18,7 +18,7 @@ class Auth extends CI_Controller
 
         if ($this->input->post()) {
             $this->form_validation->set_rules('name', 'Name', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[new_user.email]');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
             $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
             $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required|matches[password]');
 
@@ -31,7 +31,7 @@ class Auth extends CI_Controller
                     'created_at' => date('Y-m-d H:i:s')
                 ];
 
-                $this->db->insert('new_user', $data);
+                $this->db->insert('users', $data);
 
                 if ($this->db->affected_rows() > 0) {
                     $this->session->set_flashdata('success', 'Registration successful. You can now login.');
@@ -57,7 +57,7 @@ class Auth extends CI_Controller
                 $email    = $this->input->post('email');
                 $password = $this->input->post('password');
 
-                $user = $this->db->get_where('new_user', ['email' => $email])->row();
+                $user = $this->db->get_where('users', ['email' => $email])->row();
 
                 if ($user && password_verify($password, $user->password)) {
                     $this->session->set_userdata([
@@ -96,5 +96,6 @@ class Auth extends CI_Controller
         $this->load->view('auth/dashboard');
     }
 }
+
 
 
