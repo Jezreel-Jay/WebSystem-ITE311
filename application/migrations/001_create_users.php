@@ -23,7 +23,7 @@ class Migration_Create_users extends CI_Migration {
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
-            // Use VARCHAR instead of ENUM (dbforge safer this way)
+            // Use VARCHAR instead of ENUM 
             'role' => [
                 'type' => 'VARCHAR',
                 'constraint' => '20',
@@ -42,7 +42,7 @@ class Migration_Create_users extends CI_Migration {
         $this->dbforge->create_table('users', TRUE);
 
         // Add UNIQUE constraint safely
-       // $this->db->query('ALTER TABLE new_user ADD UNIQUE KEY unique_email (email)');
+        $this->db->query('ALTER TABLE users ADD UNIQUE KEY unique_email (email)');
     }
 
     public function down() {

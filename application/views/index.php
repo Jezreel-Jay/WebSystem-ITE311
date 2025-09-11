@@ -9,14 +9,14 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="http://localhost/ITE311-RIVERA2/index.php/home">Home</a>
+      <a class="navbar-brand" href="http://localhost/ITE311-RIVERA2/home">Home</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="http://localhost/ITE311-RIVERA2/index.php/about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="http://localhost/ITE311-RIVERA2/index.php/contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost/ITE311-RIVERA2/about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost/ITE311-RIVERA2/contact">Contact</a></li>
         </ul>
       </div>
     </div>
