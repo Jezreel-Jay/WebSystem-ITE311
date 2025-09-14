@@ -2,11 +2,6 @@
     RewriteEngine On
     RewriteBase /ITE311-RIVERA2/
 
-
-    #  Block direct access to index.php and redirect to clean URL
-    RewriteCond %{THE_REQUEST} ^.*/index\.php
-    RewriteRule ^index\.php(.*)$ /ITE311-RIVERA2/$1 [R=301,L]
-
     # Redirect all requests to index.php if the file/folder doesn't exist
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

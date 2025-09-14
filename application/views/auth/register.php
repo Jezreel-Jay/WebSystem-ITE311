@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 </head>
 <body>
+<nav class="navbar" style="background-color: #172e45ff;">
+  <span class="navbar-brand mb-0 h1" style="color: #FFFFFF;">myCIapp</span>
+</nav>
+
 <div class="container mt-5">
     <h2>Register</h2>
 
