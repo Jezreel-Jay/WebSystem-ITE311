@@ -20,9 +20,19 @@ $route['contact'] = 'home/contact';
 // Route for about page
 $route['about'] = 'home/about';
 
-//Auth routes for registration and login (CodeIgniter 3 syntax)
+// Auth routes for registration and login (CodeIgniter 3 syntax)
 $route['register'] = 'auth/register';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';
 $route['dashboard'] = 'auth/dashboard';
+
+// Admin Dashboard
+$route['admin/dashboard']   = 'AdminController/dashboard';
+
+// Teacher Dashboard
+$route['teacher/dashboard'] = 'TeacherController/dashboard';
+
+// Student Dashboard
+$route['student/dashboard'] = 'StudentController/dashboard';
+
 

@@ -37,6 +37,15 @@
             <label>Confirm Password</label>
             <input type="password" name="password_confirm" class="form-control" required>
         </div>
+        <!-- Role dropdown added here -->
+        <div class="form-group">
+            <label>Role</label>
+            <select name="role" class="form-control" required>
+                <option value="student" selected>Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Register</button>
         <a href="<?php echo site_url('auth/login'); ?>" class="btn btn-link">Login</a>
     </form>

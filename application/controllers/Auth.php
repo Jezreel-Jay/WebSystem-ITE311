@@ -9,6 +9,7 @@ class Auth extends CI_Controller
         $this->load->database();
         $this->load->library(['session', 'form_validation']);
         $this->load->helper(['url', 'form']);
+        $this->load->model('User_model'); //  Load the User_model
     }
 
     // ---------------- REGISTER ----------------
@@ -22,18 +23,17 @@ class Auth extends CI_Controller
             $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
             $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required|matches[password]');
 
-            if ($this->form_validation->run() == TRUE) {
+            if ($this->form_validation->run() === TRUE) {
                 $data = [
                     'name'       => $this->input->post('name'),
                     'email'      => $this->input->post('email'),
                     'password'   => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
-                    'role'       => 'user',
+                    'role'       => $this->input->post('role') ?? 'student',
                     'created_at' => date('Y-m-d H:i:s')
                 ];
 
-                $this->db->insert('users', $data);
-
-                if ($this->db->affected_rows() > 0) {
+                //  Use User_model instead of $this->db
+                if ($this->User_model->insert_user($data)) {
                     $this->session->set_flashdata('success', 'Registration successful. You can now login.');
                     redirect('auth/login');
                 } else {
@@ -53,11 +53,12 @@ class Auth extends CI_Controller
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
             $this->form_validation->set_rules('password', 'Password', 'required');
 
-            if ($this->form_validation->run() == TRUE) {
+            if ($this->form_validation->run() === TRUE) {
                 $email    = $this->input->post('email');
                 $password = $this->input->post('password');
 
-                $user = $this->db->get_where('users', ['email' => $email])->row();
+                //  Use User_model instead of $this->db
+                $user = $this->User_model->get_user_by_email($email);
 
                 if ($user && password_verify($password, $user->password)) {
                     $this->session->set_userdata([
@@ -68,7 +69,21 @@ class Auth extends CI_Controller
                         'logged_in'  => TRUE
                     ]);
                     $this->session->set_flashdata('success', 'Welcome back, ' . $user->name . '!');
-                    redirect('auth/dashboard');
+                    
+                    switch ($user->role) {
+                        case 'admin':
+                            redirect('admin/dashboard');
+                            break;
+                        case 'teacher':
+                            redirect('teacher/dashboard');
+                            break;
+                        case 'student':
+                            redirect('student/dashboard');
+                            break;
+                        default:
+                            redirect('auth/dashboard'); // fallback
+                            break;
+                        }
                 } else {
                     $this->session->set_flashdata('error', 'Invalid email or password.');
                     redirect('auth/login');
@@ -96,6 +111,4 @@ class Auth extends CI_Controller
         $this->load->view('auth/dashboard');
     }
 }
-
-
 

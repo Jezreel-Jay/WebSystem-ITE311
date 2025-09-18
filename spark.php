@@ -1,4 +1,5 @@
-#!/usr/bin/env php
+
+
 <?php
 // Only allow CLI
 if (php_sapi_name() !== 'cli') {
