@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+* @property CI_Session $session
+* @property User_model $User_model
+* @property Course_model $Course_model
+*/
 class AdminController extends CI_Controller
 {
     public function __construct()

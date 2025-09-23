@@ -37,7 +37,7 @@
 
 <div class="container mt-4">
 
-<!-- Bootstrap JS (needed for toggle functionality) -->
+<!-- Bootstrap JS  for toggle functionality -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 

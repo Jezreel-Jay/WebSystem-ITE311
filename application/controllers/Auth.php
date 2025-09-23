@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property CI_Form_validation $form_validation
+ * @property CI_Input $input
+ * @property CI_Session $session
+ * @property CI_DB_query_builder $db
+ * @property User_model $User_model
+*/
+
 class Auth extends CI_Controller
 {
     public function __construct()
@@ -15,7 +23,7 @@ class Auth extends CI_Controller
     // ---------------- REGISTER ----------------
     public function register()
     {
-        $this->form_validation->set_message('is_unique', 'This email is already registered.');
+        $this->form_validation->set_message(['is_unique' => 'This email is already registered.']);
 
         if ($this->input->post()) {
             $this->form_validation->set_rules('name', 'Name', 'required');
@@ -57,7 +65,7 @@ class Auth extends CI_Controller
                 $email    = $this->input->post('email');
                 $password = $this->input->post('password');
 
-                //  Use User_model instead of $this->db
+                
                 $user = $this->User_model->get_user_by_email($email);
 
                 if ($user && password_verify($password, $user->password)) {
@@ -68,7 +76,7 @@ class Auth extends CI_Controller
                         'user_role'  => $user->role,
                         'logged_in'  => TRUE
                     ]);
-                    $this->session->set_flashdata('success', 'Welcome back, ' . $user->name . '!');
+                   // $this->session->set_flashdata('success', 'Welcome back, ' . $user->name . '!');
                     
                     switch ($user->role) {
                         case 'admin':

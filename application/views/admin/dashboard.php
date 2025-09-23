@@ -15,7 +15,7 @@
 
     <!-- Cards -->
     <div class="row mb-4">
-        <div class="col-md-4">
+        <div class="col-md-4 m-3">
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h5 class="card-title">Total Users</h5>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 m-3">
             <div class="card text-white bg-success">
                 <div class="card-body">
                     <h5 class="card-title">Total Courses</h5>
