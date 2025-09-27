@@ -3,4 +3,8 @@
 </IfModule>
 <IfModule !authz_core_module>
 	Deny from all
+<<<<<<< HEAD
 </IfModule>
+=======
+</IfModule>
+>>>>>>> ff82323a9501e2a3aa40d2e0a616342a83971b0b
