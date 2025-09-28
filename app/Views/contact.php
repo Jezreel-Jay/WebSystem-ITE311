@@ -4,5 +4,5 @@
 
 <?= $this->section('content') ?>
     <h2>Contact Us</h2>
-    <p>If you have questions, just send us an email at <strong>myweb@gmail.com</strong>.</p>
+    <p>If you have questions, just send us an email at  <strong>myweb@gmail.com</strong>.</p>
 <?= $this->endSection() ?>

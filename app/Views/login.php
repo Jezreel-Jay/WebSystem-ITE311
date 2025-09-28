@@ -39,10 +39,10 @@
             </div>
         </div>
 
-        <p class="text-center mt-3 text-black small">
-            Don't have an account? 
+        <p class="text-center mt-3 text-black small">Don't have an account? 
             <a href="<?= base_url('register') ?>" style="color:#1E90FF;">Register</a>
         </p>
     </div>
 </div>
 <?= $this->endSection() ?>
+

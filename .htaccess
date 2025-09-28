@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Disable directory browsing
 Options -Indexes
 
@@ -48,18 +47,3 @@ Options -Indexes
 # Disable server signature start
 ServerSignature Off
 # Disable server signature end
-=======
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /ITE311-RIVERA2/
-
-    # Redirect all requests to index.php if the file/folder doesn't exist
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php/$1 [L]
-
-    # Optional: force www (remove if not needed)
-    # RewriteCond %{HTTP_HOST} !^www\. [NC]
-    # RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
-</IfModule>
->>>>>>> ff82323a9501e2a3aa40d2e0a616342a83971b0b

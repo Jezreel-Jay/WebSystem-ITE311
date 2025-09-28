@@ -28,12 +28,23 @@
                         <label for="password" class="form-label text-white">Password</label>
                         <input type="password" class="form-control bg-dark text-white border-secondary" 
                                id="password" name="password" required>
-                    </div>
+                    </diregv>
                     <div class="mb-3">
                         <label for="password_confirm" class="form-label text-white">Confirm Password</label>
                         <input type="password" class="form-control bg-dark text-white border-secondary" 
                                id="password_confirm" name="password_confirm" required>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="role" class="form-label text-white">Role</label>
+                        <select class="form-control bg-dark text-white border-secondary" 
+                                id="role" name="role" required>
+                            <option value="student" <?= old('role') === 'student' ? 'selected' : '' ?>>Student</option>
+                            <option value="teacher" <?= old('role') === 'teacher' ? 'selected' : '' ?>>Teacher</option>
+                            <option value="admin" <?= old('role') === 'admin' ? 'selected' : '' ?>>Admin</option>
+                        </select>
+                    </div>
+                                        
                         <button type="submit" 
                                 class="btn" 
                                 style="background:#003366; color:#fff; border-radius:20px; font-weight:500; transition:0.3s; padding:10px 30px; display:block; margin:0 auto;">

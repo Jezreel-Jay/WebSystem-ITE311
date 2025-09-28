@@ -5,7 +5,38 @@ namespace App\Controllers;
 use App\Models\UserModel;
 
 class Auth extends BaseController
+    
 {
+        public function dashboard()
+    {
+        $session = session();
+
+        // Authorization check
+        if (! $session->get('isLoggedIn')) {
+            return redirect()->to(base_url('login'))->with('login_error', 'Please log in first.');
+        }
+
+        $role = $session->get('role');
+        $data = [
+            'name' => $session->get('userName'),
+            'email' => $session->get('userEmail'),
+            'role'  => $session->get('role'),
+            
+        ];
+
+        // Role-specific dashboard
+        switch ($role) {
+            case 'admin':
+                return view('dashboards/admin', $data);
+            case 'teacher':
+                return view('dashboards/teacher', $data);
+            case 'student':
+                return view('dashboards/student', $data);
+            default:
+                return redirect()->to(base_url('login'))->with('login_error', 'Unknown role.');
+        }
+    }
+
     /**
      * Show Login Page
      */
@@ -36,12 +67,17 @@ class Auth extends BaseController
             $session->set([
                 'isLoggedIn' => true,
                 'userEmail'  => $email,
+                'userName'   => $user['name'],
+                'role'       => $user['role'],                
+             
+                
             ]);
             return redirect()->to(base_url('dashboard'));
         }
 
         return redirect()->back()->with('login_error', 'Invalid credentials');
     }
+
 
     /**
      * Logout
@@ -75,6 +111,8 @@ class Auth extends BaseController
         $email           = trim((string) $this->request->getPost('email'));
         $password        = (string) $this->request->getPost('password');
         $passwordConfirm = (string) $this->request->getPost('password_confirm');
+        $role            = (string) $this->request->getPost('role');
+
 
         // Validate required fields
         if ($name === '' || $email === '' || $password === '' || $passwordConfirm === '') {
@@ -104,7 +142,7 @@ class Auth extends BaseController
         $userId = $userModel->insert([
             'name'     => $name,
             'email'    => $email,
-            'role'     => 'student',
+            'role'     => $role, //modified role
             'password' => $passwordHash,
         ], true);
 
